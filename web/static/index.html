@@ -1,39 +1,36 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset='utf-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
 <title>DSpay</title>
-<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+<link rel='shortcut icon' type='image/png' href='/favicon.png'/>
 
 <!--jquery-->
-<!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!--<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+<!--<link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css'>-->
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<!--<script src='http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js'></script>-->
 
 <!--Bootstrap http://http://getbootstrap.com -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script>
 
 <!--Bootstrap Slider https://github.com/seiyria/bootstrap-slider -|->
-<link href="http://lib.ubipo.net/bootstrap-slider/css/bootstrap-slider.min.css" rel="stylesheet">
-<script src="http://lib.ubipo.net/bootstrap-slider/bootstrap-slider.min.js"></script>
+<link href='http://lib.ubipo.net/bootstrap-slider/css/bootstrap-slider.min.css' rel='stylesheet'>
+<script src='http://lib.ubipo.net/bootstrap-slider/bootstrap-slider.min.js'></script>
 -->
 
 <!--Bootstrap Swicth http://www.bootstrap-switch.org -|->
-<link href="http://lib.ubipo.net/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet">
-<script src="http://lib.ubipo.net/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<link href='http://lib.ubipo.net/bootstrap-switch/css/bootstrap-switch.min.css' rel='stylesheet'>
+<script src='http://lib.ubipo.net/bootstrap-switch/js/bootstrap-switch.min.js'></script>
 -->
 
 <!--NProgress http://https://github.com/rstacruz/nprogress -->
-<script src="http://lib.ubipo.net/jquery-handlebars/js/jquery-handlebars.js"></script>
+<link href='http://lib.ubipo.net/nprogress/css/nprogress.css' rel='stylesheet'>
+<script src='http://lib.ubipo.net/nprogress/js/nprogress.js'></script>
 
-<!--NProgress http://https://github.com/rstacruz/nprogress -->
-<link href="http://lib.ubipo.net/nprogress/css/nprogress.css" rel="stylesheet">
-<script src="http://lib.ubipo.net/nprogress/js/nprogress.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js'></script>
 
 <style>
 	body { padding-top: 70px; }
@@ -53,100 +50,104 @@
 		  width: 100%;
 		  /* Set the fixed height of the footer here */
 		  height: 60px;
-		  background-color: #f5f5f5;
+		  background-color: #DFDFDF;
 		}
 </style>
 
 </head>
 
 <body>
-	<div id="wrapper_page">
-		<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
+	<div id='wrapper_page'>
+		<nav class='navbar navbar-default navbar-fixed-top navbar-inverse'>
+			<div class='container-fluid'>
+				<div class='navbar-header'>
+					<button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' aria-expanded='false'>
+						<span class='sr-only'>Toggle navigation</span>
+						<span class='icon-bar'></span>
+						<span class='icon-bar'></span>
+						<span class='icon-bar'></span>
 					</button>
-					<a class="navbar-brand" href="#" id="nav_branding">DSpay</a>
+					<a class='navbar-brand' href='#' id='nav_branding'>DSpay</a>
 				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav" id="nav_list">
-						<li class="active"><a href="#" id="nav_home">Home</a></li>
-						<li><a href="#" id="nav_transactions">Transactions</a></li>
-						<li><a href="#" id="nav_account">Account</a></li>
+				<div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+					<ul class='nav navbar-nav' id='nav_list'>
+						<li class='active'><a href='#' id='nav_home'>Home</a></li>
+						<li><a href='#' id='nav_transactions'>Transactions</a></li>
+						<li><a href='#' id='nav_account'>Account</a></li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logged in as <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Account</a></li>
-								<li><a href="#">Log out</a></li>
+					<ul class='nav navbar-nav navbar-right'>
+						<li class='dropdown'>
+							<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Logged in as <span class='caret'></span></a>
+							<ul class='dropdown-menu'>
+								<li><a href='#'>Account</a></li>
+								<li><a href='#'>Log out</a></li>
 							</ul>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
-		<div class="container">
-			<div id="content-placeholder">
+		<div class='container'>
+			<div id='content-placeholder'>
 				
 			</div>
 		</div>
-		<footer class="footer">
-			<div class="container">
-				<p class="text-muted">Place sticky footer content here.</p>
+		<footer class='footer'>
+			<div class='container'>
+				<p class='text-muted'>Place sticky footer content here.</p>
 			</div>
 		</footer>
 	</div>	
 		
 	<script>
 		//NProgress.start();
-		console.log(window.location.href);
-
-		// > Initiate jquery-handlebars 
-		$.handlebars({
-			templatePath: 'hbt/',
-			templateExtension: 'hbt'
-		});
+		//console.log(window.location.href);
 
 		// Define our data object
 		var context={
-			"balance": "€54",
+			balance: '€54'
 		};
 
-		$('#content-placeholder').render('home', context);
+		navigate_to('home');
+		//$('#content-placeholder').render('page-home', context);
 
-		//navigate_to("home");
-		$( "#nav_branding" ).click(function() {
-			navigate_to("home");
-			$(".nav").find(".active").removeClass("active");
-			$("#nav_home").parent().addClass("active");
+		function isEmpty( selector ){
+		    return ($.trim($(selector).html())=='');
+		}
+
+		//navigate_to('home');
+		$( '#nav_branding' ).click(function() {
+			navigate_to('home');
+			$('.nav').find('.active').removeClass('active');
+			$('#nav_home').parent().addClass('active');
 		});
-		$( "#nav_list" ).click(function(e) {
-			if(e.target && e.target.nodeName == "A") {
+
+		$( '#nav_list' ).click(function(e) {
+			if(e.target && e.target.nodeName == 'A') {
 				var destination = e.target.id.slice(4);
 				navigate_to(destination);
-				$(".nav").find(".active").removeClass("active");
-				$("#" + e.target.id).parent().addClass("active");
+				$('.nav').find('.active').removeClass('active');
+				$('#' + e.target.id).parent().addClass('active');
 			}
 		});
+
 		function navigate_to(destination) {
 			NProgress.start();
-			console.log("Navigating to " + destination + "...");
-			$("#wrapper_content").load("static.dspay.ubipo.net/" +destination+".html", function( response, status, xhr ) {
-				if ( status == "error" ) {
-					var msg = "Sorry but there was an error navigating to the " + destination + " page: ";
-					$( "#wrapper_content" ).html( msg + xhr.status + " " + xhr.statusText );
-				}
-				else {
-					console.log("Navigated to " + destination);
-				}
-				NProgress.done();
+			var stateObj = { foo: "bar" };
+			history.pushState(stateObj, destination, destination);
+			console.log('Navigating to ' + destination + '...');
+			NProgress.done();
+			$.get( "hbt/page-"+ destination + ".hbt", function( data, status, xhr ) {
+			if ( status == "error" ) {
+				var msg = "Sorry but there was an error navigating to the " + destination + " page: ";
+				$( "#wrapper_content" ).html( msg + xhr.status + " " + xhr.statusText );
+			}
+			else {
+				console.log("Navigated to " + destination + data);
+			}
+			NProgress.done();
 			});
-		}
+		};
 	</script>
 </body>
 </html>
