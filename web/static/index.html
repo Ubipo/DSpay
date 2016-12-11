@@ -16,6 +16,12 @@
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script>
 
+<!--Bootstrap Notify https://github.com/mouse0270/bootstrap-notify -->
+<script src='http://lib.ubipo.net/bootstrap-notify/js/bootstrap-notify.min.js'></script>
+
+<!--animate.css https://github.com/daneden/animate.css -->
+<link href='http://lib.ubipo.net/animate.css/css/animate.css' rel='stylesheet'>
+
 <!--Bootstrap Slider https://github.com/seiyria/bootstrap-slider -|->
 <link href='http://lib.ubipo.net/bootstrap-slider/css/bootstrap-slider.min.css' rel='stylesheet'>
 <script src='http://lib.ubipo.net/bootstrap-slider/bootstrap-slider.min.js'></script>
@@ -35,6 +41,15 @@
 <style>
 	body { padding-top: 70px; }
 
+	/* == Bootstrap Notify  == */
+		[data-notify="progressbar"] {
+			margin-bottom: 0px;
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			width: 100%;
+			height: 5px;
+		}
 	/* == Sticky footer  == */
 		html {
 		  position: relative;
@@ -88,7 +103,7 @@
 			</div>
 		</nav>
 		<div class='container'>
-			<div id='content-placeholder'>
+			<div id='page-placeholder'>
 				
 			</div>
 		</div>
@@ -99,55 +114,71 @@
 		</footer>
 	</div>	
 		
-	<script>
-		//NProgress.start();
-		//console.log(window.location.href);
+<script>
+	//NProgress.start();
+	//console.log(window.location.href);
+	// Define our data object
+	var context={
+		balance: '€54'
+	};
+	$.notify({ message: 'ok' },{ type: 'danger' });
+	navigate_to('home', context);
 
-		// Define our data object
-		var context={
-			balance: '€54'
-		};
-
+	//navigate_to('home');
+	$( '#nav_branding' ).click(function() {
 		navigate_to('home');
-		//$('#content-placeholder').render('page-home', context);
+		$('.nav').find('.active').removeClass('active');
+		$('#nav_home').parent().addClass('active');
+	});
 
-		function isEmpty( selector ){
-		    return ($.trim($(selector).html())=='');
-		}
-
-		//navigate_to('home');
-		$( '#nav_branding' ).click(function() {
-			navigate_to('home');
+	$( '#nav_list' ).click(function(e) {
+		if(e.target && e.target.nodeName == 'A') {
+			var destination = e.target.id.slice(4);
+			navigate_to(destination);
 			$('.nav').find('.active').removeClass('active');
-			$('#nav_home').parent().addClass('active');
-		});
+			$('#' + e.target.id).parent().addClass('active');
+		}
+	});
 
-		$( '#nav_list' ).click(function(e) {
-			if(e.target && e.target.nodeName == 'A') {
-				var destination = e.target.id.slice(4);
-				navigate_to(destination);
-				$('.nav').find('.active').removeClass('active');
-				$('#' + e.target.id).parent().addClass('active');
-			}
-		});
+	/*
+	Navigates to a given destination by the means of a handlebars template.
+	*/
+	function navigate_to(destination, context) {
+		NProgress.start();
+		console.log('Navigating to ' + destination + '...');
+		history.pushState(null, null, destination);
+		var html = handlebars_generate('page-' + destination, context);
+		console.log(html);
+		if ( html == "" ) {
+			html = 'Woops, this shouldn\'t be here...';
+		}
+		else {
+			console.log("Navigated to " + destination);
+		}
+		//$("#page-placeholder").html(html);
+		NProgress.done();
+	};
 
-		function navigate_to(destination) {
-			NProgress.start();
-			var stateObj = { foo: "bar" };
-			history.pushState(stateObj, destination, destination);
-			console.log('Navigating to ' + destination + '...');
-			NProgress.done();
-			$.get( "hbt/page-"+ destination + ".hbt", function( data, status, xhr ) {
-			if ( status == "error" ) {
-				var msg = "Sorry but there was an error navigating to the " + destination + " page: ";
-				$( "#wrapper_content" ).html( msg + xhr.status + " " + xhr.statusText );
-			}
-			else {
-				console.log("Navigated to " + destination + data);
-			}
-			NProgress.done();
-			});
-		};
-	</script>
+	/*
+	Downloads a handlebars template, compiles it and returns the compiled template with the provided context.
+	*/
+	function handlebars_generate(name, context) {
+		var return_value;
+		$.get('hbt/'+name+'.hbt', function( data, status, xhr ) {
+			if ( status == "error") {
+				var message = ('Error loading \'' + name + '\' , server responded with' + xhr.status + ': ' + xhr.statusText);
+				console.log(message)
+				$.notify({ message: message },{ type: 'danger' });
+				return 'empty';
+			} else {
+				var template = Handlebars.compile(data);
+				console.log(template(context));
+				return_value = template(context);
+				console.log("Successfully compiled " + name + return_value);
+			};
+		});
+		return return_value;
+	}
+</script>
 </body>
 </html>
